@@ -5,6 +5,17 @@ set(APP_COPYRIGHT "Copyright 2016 Bill Quith")
 
 set(PROJECT_SOURCES
     main.cpp
+    imgui/imconfig.h
+    imgui/imgui.h
+    imgui/imgui_internal.h
+    imgui/imgui.cpp
+    imgui/imgui_demo.cpp
+    imgui/imgui_draw.cpp
+    imgui/stb_rect_pack.h
+    imgui/stb_textedit.h
+    imgui/stb_truetype.h
+    imgui/imgui-SFML.cpp
+    imgui/imgui-SFML.h
     )
 
 find_package(SFML 2.3 COMPONENTS system window graphics REQUIRED)
@@ -18,7 +29,7 @@ set(APP_RESOURCE_DIR "res")
 
 add_executable(${APP_NAME} ${APP_BUILD_TYPE} ${PROJECT_SOURCES})
 
-target_link_libraries(${APP_NAME} twod ${SFML_LIBRARIES})
+target_link_libraries(${APP_NAME} twod ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 
 # add_custom_command(TARGET ${APP_NAME} POST_BUILD
 #     COMMAND ${CMAKE_COMMAND} -E copy_directory
