@@ -1,37 +1,5 @@
 
-## Build generated
 build*/
-
-# Python
-*.py[cod]
-__pycache__/
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-*.ko
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-# Compiled Static libraries
-*.a
-*.lib
-*.lo
-
-# Executables
-*.exe
-*.out
-*.app
-
+bin/
+lib/
 
