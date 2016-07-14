@@ -5,6 +5,9 @@ set(APP_COPYRIGHT "Copyright 2016 Bill Quith")
 
 set(PROJECT_SOURCES
     main.cpp
+    demo/demo.hpp
+    demo/physics.hpp
+    demo/physics.cpp
     imgui/imconfig.h
     imgui/imgui.h
     imgui/imgui_internal.h
@@ -17,6 +20,9 @@ set(PROJECT_SOURCES
     imgui/imgui-SFML.cpp
     imgui/imgui-SFML.h
     )
+
+source_group(ImGui REGULAR_EXPRESSION imgui/.*)
+source_group(demo REGULAR_EXPRESSION demo/.*)
 
 find_package(SFML 2.3 COMPONENTS system window graphics REQUIRED)
 
