@@ -3,6 +3,8 @@ set(LIB_NAME twod) # 2D
 
 set(PROJECT_SOURCES
     config.hpp
+    rect.hpp
+    rect.cpp    
     vector.hpp
     vector.cpp    
     )

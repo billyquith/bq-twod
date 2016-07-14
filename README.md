@@ -8,4 +8,8 @@ BQ-Math
 
 **Twod**: Math library. 2D only. API agnostic.
 
+Objectives:
+- Practical, flexible.
+- Initially performance not critical.
+
 Test application uses SFML as it is *simple*. No SFML usage in Twod.

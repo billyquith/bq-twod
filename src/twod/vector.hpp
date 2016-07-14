@@ -26,7 +26,7 @@ namespace twod {
         }
     };
 
-    template <typename T>
+    template <typename T, typename NI = T>
     struct Vec2
     {
         T x,y;
@@ -36,70 +36,71 @@ namespace twod {
         Vec2(T x_, T y_) : x(x_), y(y_) {}
         
         template <typename U>
-        Vec2(const Vec2<U>& o) : x(T(o.x)), y(T(o.y)) {}
+        Vec2(const Vec2<U> &o) : x(T(o.x)), y(T(o.y)) {}
         
-        bool operator == (const Vec2& o) const {
+        bool operator == (const Vec2 &o) const {
             return VectorTraits<T>::compare(x, y, o.x, o.y);
         }
         
         void set(T x_, T y_) { x = x_, y = y_; }
         
-        Vec2 operator + (const Vec2& o) const   { return Vec2(x + o.x, y + o.y); }
-        void operator += (const Vec2& o)        { x += o.x, y += o.y; }
+        Vec2 operator + (const Vec2 &o) const   { return Vec2(x + o.x, y + o.y); }
+        void operator += (const Vec2 &o)        { x += o.x, y += o.y; }
         
         Vec2 operator - () const                { return Vec2(-x, -y); }
-        Vec2 operator - (const Vec2& o) const   { return Vec2(x - o.x, y - o.y); }
-        void operator -= (const Vec2& o)        { x -= o.x, y -= o.y; }
+        Vec2 operator - (const Vec2 &o) const   { return Vec2(x - o.x, y - o.y); }
+        void operator -= (const Vec2 &o)        { x -= o.x, y -= o.y; }
         
         Vec2 operator * (T s) const             { return Vec2(x*s, y*s); }
         void operator *= (T s)                  { x *= s, y *= s; }
-        Vec2 operator * (const Vec2& o) const   { return Vec2(x * o.x, y * o.y); }
-        void operator *= (const Vec2& o)        { x *= o.x, y *= o.y; }
+        Vec2 operator * (const Vec2 &o) const   { return Vec2(x * o.x, y * o.y); }
+        void operator *= (const Vec2 &o)        { x *= o.x, y *= o.y; }
         
         Vec2 operator / (T s) const             { return Vec2(x/s, y/s); }
         void operator /= (T s)                  { x /= s, y /= s; }
         
         T lengthSquared() const     { return x*x + y*y; }
-        T length() const            { return std::sqrt(x*x + y*y); }
+        NI length() const           { return std::sqrt(NI(x*x + y*y)); }
 
         T dot(const Vec2 &o) const {
             return x * o.x + y * o.y;
         }
 
-        float normalise()
+        // normalise in-place
+        NI normalise()
         {
-            const float vlen = length();
-            const float invlen = 1.f / vlen;
+            const NI vlen = length();
+            const NI invlen = NI(1.0) / vlen;
             x *= invlen;
             y *= invlen;
             return vlen;    // Old length.
         }
 
-        float setLength(float newLen)
+        NI setLength(NI newLen)
         {
-            const float vlen = length();
-            const float scale = newLen / vlen;
+            const NI vlen = length();
+            const NI scale = newLen / vlen;
             x *= scale;
             y *= scale;
             return vlen;    // Old length.
         }
 
-        static Vec2 polar(float rad);               // anti-clkws from x-axis.
-        static Vec2 compass(float degrees);         // clkws from north.
+        static Vec2 polar(NI rad);               // anti-clkws from x-axis.
+        static Vec2 compass(NI degrees);         // clkws from north.
 
         // Rotate vector origin anti-clkws by rad.
-        void rotate(float aclkRad);
+        void rotate(NI aclkRad);
 
         // Rotate around centre point anti-clkws by rad.
-        void rotateAround(const Vec2 &centre, float aclkRad);
+        void rotateAround(const Vec2 &centre, NI aclkRad);
     };
 
-    typedef Vec2<int16_t> Vec2i16;
-    typedef Vec2<int32_t> Vec2i32;
+    typedef Vec2<int16_t, float> Vec2i16;
+    typedef Vec2<int32_t, float> Vec2i32;
     typedef Vec2i32 Vec2i;
     
-    typedef Vec2<float> Vec2f32;
-    typedef Vec2<double> Vec2f64;
+    typedef Vec2<float, float> Vec2f32;
+    typedef Vec2<double, double> Vec2f64;
     typedef Vec2f32 Vec2f;
     
 }

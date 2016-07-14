@@ -4,21 +4,21 @@
 
 namespace twod {
     
-    template <typename T>
+    template <typename T, typename NI = T>
     struct Rect
     {
-        typedef Vec2<T> Vec;
+        typedef Vec2<T, NI> Vec;
         
         Vec tl, br;
         
         Rect() {}
         Rect(T l, T t, T r, T b) : tl(l,t), br(r,b) {}
-        Rect(const Vec& tl_, const Vec& br_) : tl(tl_), br(br_) {}
+        Rect(const Vec &tl_, const Vec &br_) : tl(tl_), br(br_) {}
         
         template <typename U>
-        Rect(const U& other) : tl(Vec2<T>(other.tl)), br(Vec2<T>(other.br)) {}
+        Rect(const U &other) : tl(Vec2<T>(other.tl)), br(Vec2<T>(other.br)) {}
 
-        void set(const Vec& tl_, const Vec& br_) { tl = tl_, br = br_; }
+        void set(const Vec &tl_, const Vec &br_) { tl = tl_, br = br_; }
         
         void set(T left, T top, T right, T bottom) {
             set(Vec(left,top), Vec(right,bottom));
@@ -111,10 +111,10 @@ namespace twod {
         }
     };
 
-    typedef Rect<int32_t> Recti32;
+    typedef Rect<int32_t, float> Recti32;
     typedef Recti32 Recti;
     
-    typedef Rect<float> Rectf32;
+    typedef Rect<float, float> Rectf32;
     typedef Rectf32 Rectf;
     
 }
