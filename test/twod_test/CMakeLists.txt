@@ -33,6 +33,8 @@ set(APP_RESOURCE_DIR "res")
 
 # add_definitions("-DRESOURCE_DIR=\"${APP_RESOURCE_DIR}\"")
 
+add_definitions(-std=c++11)
+
 add_executable(${APP_NAME} ${APP_BUILD_TYPE} ${PROJECT_SOURCES})
 
 target_link_libraries(${APP_NAME} twod ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})

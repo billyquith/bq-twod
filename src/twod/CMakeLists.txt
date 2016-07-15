@@ -3,6 +3,8 @@ set(LIB_NAME twod) # 2D
 
 set(PROJECT_SOURCES
     config.hpp
+    
+    # types
     rect.hpp
     rect.cpp    
     vector.hpp
@@ -38,6 +40,8 @@ source_group("Chipmunk" REGULAR_EXPRESSION "chipmunkpp/.*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
                     ${BQMATH_EXTERNAL_DIR}/chipmunk/include)
+
+add_definitions(-std=c++11)
 
 add_library(${LIB_NAME} STATIC ${PROJECT_SOURCES})
 
