@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/billyquith/Chipmunk2D.git
+	branch = master
+	commit = dbc983e3f3f2f7269aca8d21ba64085c00130172
+	parent = e66fc59de24058b86bac7c1196321b0bf961b474
+	cmdver = 0.3.0
