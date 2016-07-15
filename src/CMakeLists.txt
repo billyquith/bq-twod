@@ -1,6 +1,8 @@
 
 set(BQMATH_EXTERNAL_DIR "${CMAKE_CURRENT_LIST_DIR}/external")
 
+add_subdirectory(bqmath)
+
 add_subdirectory(twod)
 
 # chipmunk tuning
