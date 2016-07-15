@@ -11,9 +11,9 @@ Layers::Layers()
 }
 
 Layers::Layers(unsigned int layerNr)
-:   l(1<<layerNr)
+:   l(1 << layerNr)
 {
-    assert(layerNr <= 31);
+    assert(layerNr <= sizeof(cpBitmask)*8 - 1);
 }
 
 Layers::operator cpBitmask() const
@@ -31,7 +31,7 @@ Layers Layers::operator~() const
 Layers Layers::operator | (Layers rhs) const
 {
     Layers tmp;
-    tmp.l = l|rhs.l;
+    tmp.l = l | rhs.l;
     return tmp;
 }
 
