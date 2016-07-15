@@ -1,3 +1,3 @@
 
 add_subdirectory(twod)
-add_subdirectory(twod_test)
+#add_subdirectory(external/Chipmunk2D)
