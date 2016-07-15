@@ -28,8 +28,7 @@ namespace cp {
         cpBitmask l;
     };
 
-
-    const static Layers ALL_LAYERS(~(Layers()));
+    static const Layers ALL_LAYERS(~(Layers()));
 
     class Group
     {
@@ -43,7 +42,7 @@ namespace cp {
         cpGroup g;
     };
 
-    const static Group NO_GROUP(CP_NO_GROUP);
+    static const Group NO_GROUP(CP_NO_GROUP);
     
 }}
 
