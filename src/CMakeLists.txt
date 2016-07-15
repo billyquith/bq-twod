@@ -1,3 +1,7 @@
 
 add_subdirectory(twod)
-#add_subdirectory(external/Chipmunk2D)
+
+# chipmunk
+set(BUILD_SHARED OFF)
+add_subdirectory(external/chipmunk)
+#source_group(chipmunk REGULAR_EXPRESSION chipmunk/.*)
