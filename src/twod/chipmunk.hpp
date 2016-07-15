@@ -1,6 +1,5 @@
 #pragma once
 
-#include "chipmunkpp/memory.hpp"
 #include "chipmunkpp/space.hpp"
 #include "chipmunkpp/body.hpp"
 #include "chipmunkpp/vect.hpp"

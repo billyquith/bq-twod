@@ -2,7 +2,6 @@
 
 #include "vect.hpp"
 #include "types.hpp"
-#include "memory.hpp"
 #include "segmentqueryinfo.hpp"
 
 #include <chipmunk/chipmunk.h>

@@ -2,7 +2,6 @@
 
 #include "shape.hpp"
 #include "vect.hpp"
-#include "memory.hpp"
 
 #include <vector>
 #include <map>
@@ -11,6 +10,7 @@
 #pragma GCC visibility push(default)
 #endif
 namespace cp {
+    
     typedef std::function<void (std::shared_ptr<Shape>, Float, Vect)> SegmentQueryFunc;
 
     class Body;
@@ -30,8 +30,8 @@ namespace cp {
         void remove(std::shared_ptr<Shape> );
         void remove(std::shared_ptr<Body> );
 
-        /// Global gravity applied to the space. Defaults to cp::Vect(0, 0). Can be overridden on a per body basis by
-        /// writing custom integration functions.
+        /// Global gravity applied to the space. Defaults to cp::Vect(0, 0). Can be overridden
+        // on a per body basis by writing custom integration functions.
         Vect getGravity() const;
         void setGravity(const Vect&);
 
@@ -51,6 +51,7 @@ namespace cp {
 
         Space(const Space&);
         const Space& operator=(const Space&);
+        
         static void segmentQueryFunc(cpShape*, cpVect, cpVect, cpFloat, void*);
         std::shared_ptr<Shape> findPtr(cpShape*) const;
 
@@ -58,13 +59,14 @@ namespace cp {
         std::vector<std::shared_ptr<Shape> > shapes;
         std::vector<std::shared_ptr<Body> > bodies;
 
-        struct SegmentQueryData {
+        struct SegmentQueryData
+        {
             const Space* const self;
             SegmentQueryFunc& func;
         };
 
-
-        struct CallbackData {
+        struct CallbackData
+        {
             std::function<int(Arbiter, Space&)> begin;
             std::function<int(Arbiter, Space&)> preSolve;
             std::function<void(Arbiter, Space&)> postSolve;
@@ -76,10 +78,12 @@ namespace cp {
                          std::function<void(Arbiter, Space&)> postSolve,
                          std::function<void(Arbiter, Space&)> separate,
                          Space& self)
-                : begin(begin), preSolve(preSolve), postSolve(postSolve), separate(separate), self(
-                    self)
-            {
-            }
+            :   begin(begin)
+            ,   preSolve(preSolve)
+            ,   postSolve(postSolve)
+            ,   separate(separate)
+            ,   self(self)
+            {}
 
         };
 
@@ -96,7 +100,6 @@ namespace cp {
 
         std::shared_ptr<Body> staticBody;
     };
-
 
 }
 #ifndef _MSC_VER

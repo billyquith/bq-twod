@@ -19,7 +19,6 @@ set(PROJECT_SOURCES
     chipmunkpp/body.hpp
     chipmunkpp/circleshape.cpp
     chipmunkpp/circleshape.hpp
-    chipmunkpp/memory.hpp
     chipmunkpp/polyshape.cpp
     chipmunkpp/polyshape.hpp
     chipmunkpp/segmentqueryinfo.hpp
