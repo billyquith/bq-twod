@@ -5,10 +5,10 @@ set(PROJECT_SOURCES
     config.hpp
     
     # types
-    rect.hpp
-    rect.cpp    
-    vector.hpp
-    vector.cpp
+    types/rect.hpp
+    types/rect.cpp    
+    types/vector.hpp
+    types/vector.cpp
     
     # chipmunk++
     chipmunk.hpp
@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
     chipmunkpp/vect.hpp
     )
 
+source_group("Twod" REGULAR_EXPRESSION ".*")
+source_group("Types" REGULAR_EXPRESSION "types/.*")
 source_group("Chipmunk" REGULAR_EXPRESSION "chipmunkpp/.*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
