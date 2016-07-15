@@ -8,16 +8,17 @@
 #include <boost/function.hpp>
 
 namespace std {
-	using boost::shared_ptr;
-	using boost::weak_ptr;
-	using boost::make_shared;
+    
+    using boost::shared_ptr;
+    using boost::weak_ptr;
+    using boost::make_shared;
 
-	using boost::function;
+    using boost::function;
 }
 
-#else
+#else // ifdef CHIPMUNKPP_BOOST
 
 #include <memory>
 #include <functional>
 
-#endif
+#endif // ifdef CHIPMUNKPP_BOOST

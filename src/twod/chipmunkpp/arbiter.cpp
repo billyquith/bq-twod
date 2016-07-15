@@ -1,20 +1,23 @@
 #include "arbiter.hpp"
 
 namespace cp {
-	Arbiter::Arbiter(cpArbiter* a) : arbiter(a) {
-	}
+    
+Arbiter::Arbiter(cpArbiter* a) : arbiter(a)
+{
+}
 
-	Body Arbiter::getBodyA() {
-		cpBody* a;
-		cpBody* b;
-		cpArbiterGetBodies(arbiter, &a, &b);
-		return Body(a);
-	}
+Body Arbiter::getBodyA()
+{
+    cpBody *a, *b;
+    cpArbiterGetBodies(arbiter, &a, &b);
+    return Body(a);
+}
 
-	Body Arbiter::getBodyB() {
-		cpBody* a;
-		cpBody* b;
-		cpArbiterGetBodies(arbiter, &a, &b);
-		return Body(b);
-	}
+Body Arbiter::getBodyB()
+{
+    cpBody *a, *b;
+    cpArbiterGetBodies(arbiter, &a, &b);
+    return Body(b);
+}
+
 }

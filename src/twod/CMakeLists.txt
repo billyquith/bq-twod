@@ -37,7 +37,8 @@ set(PROJECT_SOURCES
 
 source_group("Chipmunk" REGULAR_EXPRESSION "chipmunkpp/.*")
 
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/src
+                    ${BQMATH_EXTERNAL_DIR}/chipmunk/include)
 
 add_library(${LIB_NAME} STATIC ${PROJECT_SOURCES})
 

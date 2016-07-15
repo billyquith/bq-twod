@@ -2,15 +2,21 @@
 
 #include "body.hpp"
 
-#include <chipmunk.h>
+#include <chipmunk/chipmunk.h>
 
 namespace cp {
-	class Arbiter {
-	public:
-		Arbiter(cpArbiter*);
-		Body getBodyA();
-		Body getBodyB();
-	private:
-		cpArbiter* arbiter;
-	};
+    
+    class Arbiter
+    {
+    public:
+
+        Arbiter(cpArbiter*);
+        Body getBodyA();
+        Body getBodyB();
+
+    private:
+
+        cpArbiter* arbiter;
+    };
+
 }
