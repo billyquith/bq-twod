@@ -2,6 +2,7 @@
 
 #include <cassert>
 
+namespace twod {
 namespace cp {
     
 Layers::Layers()
@@ -44,4 +45,4 @@ Group::operator cpGroup() const
     return g;
 }
 
-}
+}}

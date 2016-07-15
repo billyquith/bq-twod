@@ -9,6 +9,8 @@
 #ifndef _MSC_VER
 #pragma GCC visibility push(default)
 #endif
+
+namespace twod {
 namespace cp {
     
     typedef std::function<void (std::shared_ptr<Shape>, Float, Vect)> SegmentQueryFunc;
@@ -101,7 +103,8 @@ namespace cp {
         std::shared_ptr<Body> staticBody;
     };
 
-}
+}}
+    
 #ifndef _MSC_VER
 #pragma GCC visibility pop
 #endif

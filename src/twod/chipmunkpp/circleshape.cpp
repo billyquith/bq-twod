@@ -1,5 +1,6 @@
 #include "circleshape.hpp"
 
+namespace twod {
 namespace cp {
     
 CircleShape::CircleShape(std::shared_ptr<Body> body, Float radius, Vect offset)
@@ -7,4 +8,4 @@ CircleShape::CircleShape(std::shared_ptr<Body> body, Float radius, Vect offset)
 {
 }
 
-}
+}}

@@ -1,5 +1,6 @@
 #include "polyshape.hpp"
 
+namespace twod {
 namespace cp {
     
 PolyShape::PolyShape(std::shared_ptr<Body> body, const std::vector<Vect>& verts)
@@ -21,4 +22,4 @@ cp::Vect PolyShape::getVert(int i)
     return cpPolyShapeGetVert(shape, i);
 }
 
-}
+}}

@@ -6,6 +6,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     /// Segment query info struct
@@ -27,7 +28,8 @@ namespace cp {
         }
     };
 
-}
+}}
+
 #ifndef _MSC_VER
 #pragma GCC visibility pop
 #endif

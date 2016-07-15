@@ -11,6 +11,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     class Body;
@@ -52,7 +53,7 @@ namespace cp {
         cpShape* shape;
     };
 
-}
+}}
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop

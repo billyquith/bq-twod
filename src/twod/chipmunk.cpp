@@ -1,5 +1,6 @@
 #include "chipmunk.hpp"
 
+namespace twod {
 namespace cp {
     
 Float momentForCircle(Float m, Float r1, Float r2, Vect offset)
@@ -13,4 +14,4 @@ Float areaForPoly(const std::vector<cp::Vect>& vects)
                          reinterpret_cast<const cpVect*>(&vects[0]), 0);
 }
 
-}
+}}

@@ -1,5 +1,6 @@
 #include "body.hpp"
 
+namespace twod {
 namespace cp {
     
 Body::Body(cpFloat mass, cpFloat inertia)
@@ -63,4 +64,4 @@ void Body::setUserData(DataPointer p)
     cpBodySetUserData(body, p);
 }
 
-}
+}}

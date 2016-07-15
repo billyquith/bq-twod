@@ -8,6 +8,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     /// 2D Vector class
@@ -121,9 +122,10 @@ namespace cp {
     Vect operator +(const Vect& lhs, const Vect& rhs);
     bool operator <(const Vect& lhs, const Vect& rhs);
     bool operator >(const Vect& lhs, const Vect& rhs);
-}
 
-std::ostream& operator<<(std::ostream&, const cp::Vect&);
+}}
+
+std::ostream& operator<<(std::ostream&, const twod::cp::Vect&);
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop

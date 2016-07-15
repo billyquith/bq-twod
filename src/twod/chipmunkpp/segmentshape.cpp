@@ -1,5 +1,6 @@
 #include "segmentshape.hpp"
 
+namespace twod {
 namespace cp {
     
 SegmentShape::SegmentShape(std::shared_ptr<Body> body, Vect a, Vect b, Float radius)
@@ -7,4 +8,4 @@ SegmentShape::SegmentShape(std::shared_ptr<Body> body, Vect a, Vect b, Float rad
 {
 }
 
-}
+}}

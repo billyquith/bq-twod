@@ -5,26 +5,30 @@
 
 namespace twod {
     
-    template <typename T, typename Enable = void> struct VectorTraits;
+    namespace detail {
+    
+        template <typename T, typename Enable = void> struct VectorTraits;
 
-    template <typename T>
-    struct VectorTraits<T, typename std::enable_if<std::is_integral<T>::value>::type>
-    {
-        static inline bool compare(T x1, T y1, T x2, T y2) {
-            return x1==x2 && y1==y2;
-        }
-    };
+        template <typename T>
+        struct VectorTraits<T, typename std::enable_if<std::is_integral<T>::value>::type>
+        {
+            static inline bool compare(T x1, T y1, T x2, T y2) {
+                return x1==x2 && y1==y2;
+            }
+        };
 
-    template <typename T>
-    struct VectorTraits<T, typename std::enable_if<std::is_floating_point<T>::value>::type>
-    {
-        constexpr static T c_eps = 1e-5;
-        static inline bool fltcmp(T a, T b) { return std::abs(a-b) < T(c_eps); }
+        template <typename T>
+        struct VectorTraits<T, typename std::enable_if<std::is_floating_point<T>::value>::type>
+        {
+            constexpr static T c_eps = 1e-5;
+            static inline bool fltcmp(T a, T b) { return std::abs(a-b) < T(c_eps); }
 
-        static inline bool compare(T x1, T y1, T x2, T y2) {
-            return fltcmp(x1, x2) && fltcmp(y1, y2);
-        }
-    };
+            static inline bool compare(T x1, T y1, T x2, T y2) {
+                return fltcmp(x1, x2) && fltcmp(y1, y2);
+            }
+        };
+        
+    } // namespace detail
 
     template <typename T, typename NI = T>
     struct Vec2
@@ -39,7 +43,7 @@ namespace twod {
         Vec2(const Vec2<U> &o) : x(T(o.x)), y(T(o.y)) {}
         
         bool operator == (const Vec2 &o) const {
-            return VectorTraits<T>::compare(x, y, o.x, o.y);
+            return detail::VectorTraits<T>::compare(x, y, o.x, o.y);
         }
         
         void set(T x_, T y_) { x = x_, y = y_; }

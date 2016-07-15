@@ -7,6 +7,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     /// Perfect circle shape
@@ -17,7 +18,7 @@ namespace cp {
         CircleShape(std::shared_ptr<Body>, Float radius, Vect offset = Vect(0, 0));
     };
 
-}
+}}
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop

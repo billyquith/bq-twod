@@ -8,6 +8,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     /// Beveled (rounded) segment shape
@@ -18,7 +19,7 @@ namespace cp {
         SegmentShape(std::shared_ptr<Body>, Vect a, Vect b, Float radius);
     };
 
-}
+}}
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop

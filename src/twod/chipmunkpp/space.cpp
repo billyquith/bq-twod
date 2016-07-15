@@ -5,10 +5,12 @@
 #include <algorithm>
 #include <cassert>
 
+
+namespace twod {
+namespace cp {
+
 using namespace std;
 
-namespace cp {
-    
 Space::Space()
 :   space(cpSpaceNew())
 ,   staticBody(make_shared<Body>(cpSpaceGetStaticBody(space)))
@@ -163,4 +165,4 @@ void Space::addCollisionHandler(CollisionType a, CollisionType b,
                                data);*/
 }
 
-}
+}}

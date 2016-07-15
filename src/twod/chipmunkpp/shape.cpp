@@ -1,6 +1,7 @@
 #include "shape.hpp"
 #include "body.hpp"
 
+namespace twod {
 namespace cp {
     
 Shape::Shape(cpShape* s, std::shared_ptr<Body> b)
@@ -72,4 +73,4 @@ void Shape::setBody(std::shared_ptr<Body> b)
     body = b;
 }
 
-}
+}}

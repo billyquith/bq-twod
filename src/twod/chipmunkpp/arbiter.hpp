@@ -4,6 +4,7 @@
 
 #include <chipmunk/chipmunk.h>
 
+namespace twod {
 namespace cp {
     
     class Arbiter
@@ -19,4 +20,4 @@ namespace cp {
         cpArbiter* arbiter;
     };
 
-}
+}}

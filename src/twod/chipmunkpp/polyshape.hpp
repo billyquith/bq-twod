@@ -9,6 +9,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     /// Convex polygon shape
@@ -23,7 +24,7 @@ namespace cp {
     };
 
 
-}
+}}
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop

@@ -1,5 +1,6 @@
 #include "arbiter.hpp"
 
+namespace twod {
 namespace cp {
     
 Arbiter::Arbiter(cpArbiter* a) : arbiter(a)
@@ -20,4 +21,4 @@ Body Arbiter::getBodyB()
     return Body(b);
 }
 
-}
+}}

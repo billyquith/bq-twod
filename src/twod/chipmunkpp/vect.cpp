@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
+namespace twod {
 namespace cp {
     
 bool operator==(const Vect& lhs, const Vect& rhs)
@@ -237,9 +238,10 @@ bool Vect::near(Vect v1, Vect v2, Float dist)
     return (v1-v2).lengthSq() < dist*dist;
 }
 
-}
+} // namespace cp
+} // namespace twod
 
-std::ostream& operator<<(std::ostream& out, const cp::Vect& vec)
+std::ostream& operator<<(std::ostream& out, const twod::cp::Vect& vec)
 {
     int w = static_cast<int>(out.width(0));
     out<<"("<<std::setw(w)<<vec.x<<", "<<std::setw(w)<<vec.y<<")";

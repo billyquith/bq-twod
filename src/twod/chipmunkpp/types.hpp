@@ -6,6 +6,7 @@
 #pragma GCC visibility push(default)
 #endif
 
+namespace twod {
 namespace cp {
     
     typedef cpFloat Float;
@@ -43,7 +44,8 @@ namespace cp {
     };
 
     const static Group NO_GROUP(CP_NO_GROUP);
-}
+    
+}}
 
 #ifndef _MSC_VER
 #pragma GCC visibility pop
