@@ -1,3 +1,6 @@
+###############################
+# installing
+###############################
 
 set(LIB_NAME twod) # 2D
 
@@ -46,4 +49,22 @@ include_directories(${PROJECT_SOURCE_DIR}/src
 add_definitions(-std=c++11)
 
 add_library(${LIB_NAME} STATIC ${PROJECT_SOURCES})
+
+###############################
+# installing
+###############################
+
+install(CODE "MESSAGE(\"Installing ${LIB_NAME} to ${CMAKE_INSTALL_PREFIX}.\")")
+
+install(DIRECTORY DESTINATION "${CMAKE_INSTALL_PREFIX}/include")
+install(DIRECTORY DESTINATION "${CMAKE_INSTALL_PREFIX}/lib")
+install(DIRECTORY DESTINATION "${CMAKE_INSTALL_PREFIX}/bin")
+
+install(DIRECTORY . DESTINATION include COMPONENT dev
+        FILES_MATCHING PATTERN "*.hpp")
+
+install(TARGETS twod
+        RUNTIME DESTINATION bin COMPONENT bin
+        LIBRARY DESTINATION lib COMPONENT bin
+        ARCHIVE DESTINATION lib COMPONENT dev)
 
