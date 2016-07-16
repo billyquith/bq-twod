@@ -10,7 +10,7 @@ set(PROJECT_SOURCES
 #source_group("Twod" REGULAR_EXPRESSION ".*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
-                    ${BQMATH_EXTERNAL_DIR}/chipmunk/include)
+                    ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)
 
 add_definitions(-std=c++11)
 

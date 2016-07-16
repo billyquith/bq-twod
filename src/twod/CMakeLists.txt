@@ -41,7 +41,7 @@ source_group("Types" REGULAR_EXPRESSION "types/.*")
 source_group("Chipmunk" REGULAR_EXPRESSION "chipmunkpp/.*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
-                    ${BQMATH_EXTERNAL_DIR}/chipmunk/include)
+                    ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)
 
 add_definitions(-std=c++11)
 
