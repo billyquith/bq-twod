@@ -29,8 +29,9 @@ void DemoPoints::drawPoints(sf::RenderTarget &rt)
     const int nb = points_.size();
     for (int i=0; i < nb; ++i)
     {
-        sf::CircleShape cs(6.f);
-        cs.setPosition(points_[i].sfVec() - sf::Vector2f(3.f,3.f));
+        const float r = points_[i].radius;
+        sf::CircleShape cs(r);
+        cs.setPosition(points_[i].sfVec() - sf::Vector2f(r,r));
         cs.setFillColor(points_[i].sfCol());
         rt.draw(cs);
     }
@@ -46,8 +47,7 @@ void DemoPoints::processEvent(const sf::Event &evt)
             for (auto& pt : points_)
             {
                 const bool over = (pt.pos - mp).length() <= pt.radius;
-                pt.state = Point::State(
-                    (pt.state & ~Point::STATE_MOUSE_OVER) | (over ? Point::STATE_MOUSE_OVER : 0));
+                pt.setState(Point::STATE_MOUSE_OVER, over);
             }
             
             if (dragging_)
@@ -77,6 +77,7 @@ void DemoPoints::processEvent(const sf::Event &evt)
                             selectedPt_ = &pt;
                             dragging_ = true;
                             pt.pos = mp;
+                            pt.setState(Point::STATE_MOUSE_DRAGGING, true);
                             break;
                         }
                     }
@@ -84,6 +85,8 @@ void DemoPoints::processEvent(const sf::Event &evt)
                 else
                 {
                     dragging_ = false;
+                    if (selectedPt_)
+                        selectedPt_->setState(Point::STATE_MOUSE_DRAGGING, false);
                     selectedPt_ = nullptr;
                 }
             }

@@ -40,9 +40,9 @@ public:
         };
         
         Point()
-        :   colNormal(40,40,40)
+        :   colNormal(100,40,40)
         ,   colOnOver(200,40,40)
-        ,   colOnDrag(220,40,40)
+        ,   colOnDrag(250,40,40)
         ,   radius(10.f)
         ,   state(STATE_NONE)
         ,   data(nullptr)
@@ -64,6 +64,11 @@ public:
             if (state & STATE_MOUSE_OVER)
                 return colOnOver;
             return colNormal;
+        }
+        
+        void setState(State flag, bool on)
+        {
+            state = Point::State((state & ~flag) | (on ? flag : 0));
         }
     };
     
