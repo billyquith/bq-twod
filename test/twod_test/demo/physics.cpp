@@ -1,7 +1,7 @@
 
 #include "physics.hpp"
 
-void PhysicsDemo::init()
+void PhysicsDemo::enter()
 {
     
 }
@@ -11,7 +11,7 @@ void PhysicsDemo::update()
     
 }
 
-void PhysicsDemo::cleanUp()
+void PhysicsDemo::exit()
 {
     
 }

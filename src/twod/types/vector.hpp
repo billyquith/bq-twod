@@ -66,10 +66,14 @@ namespace twod {
         T lengthSquared() const     { return x*x + y*y; }
         NI length() const           { return std::sqrt(NI(x*x + y*y)); }
 
-        T dot(const Vec2 &o) const {
-            return x * o.x + y * o.y;
+        NI setLength(NI newLen)
+        {
+            const NI vlen = length();
+            const NI scale = newLen / vlen;
+            x *= scale;
+            y *= scale;
+            return vlen;    // Old length.
         }
-
         // normalise in-place
         NI normalise()
         {
@@ -80,13 +84,8 @@ namespace twod {
             return vlen;    // Old length.
         }
 
-        NI setLength(NI newLen)
-        {
-            const NI vlen = length();
-            const NI scale = newLen / vlen;
-            x *= scale;
-            y *= scale;
-            return vlen;    // Old length.
+        T dot(const Vec2 &o) const {
+            return x * o.x + y * o.y;
         }
 
         static Vec2 polar(NI rad);               // anti-clkws from x-axis.

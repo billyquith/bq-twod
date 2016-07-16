@@ -7,7 +7,7 @@ class PhysicsDemo : public Demo
 public:
     virtual ~PhysicsDemo() {}
     
-    void init() override;
-    void update() override;
-    void cleanUp() override;
+    void enter() override;
+    void draw() override;
+    void exit() override;
 };

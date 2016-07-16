@@ -5,9 +5,16 @@ set(APP_COPYRIGHT "Copyright 2016 Bill Quith")
 
 set(PROJECT_SOURCES
     main.cpp
+    
+    # demos
     demo/demo.hpp
-    demo/physics.hpp
-    demo/physics.cpp
+    demo/demo.cpp
+    demo/intersect.hpp
+    demo/intersect.cpp
+    # demo/physics.hpp
+    # demo/physics.cpp
+    
+    # ImGui
     imgui/imconfig.h
     imgui/imgui.h
     imgui/imgui_internal.h
