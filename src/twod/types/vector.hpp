@@ -46,7 +46,7 @@ namespace twod {
             return detail::VectorTraits<T>::compare(x, y, o.x, o.y);
         }
         
-        void set(T x_, T y_) { x = x_, y = y_; }
+        void set(T x_, T y_)                    { x = x_, y = y_; }
         
         Vec2 operator + (const Vec2 &o) const   { return Vec2(x + o.x, y + o.y); }
         void operator += (const Vec2 &o)        { x += o.x, y += o.y; }
@@ -63,8 +63,8 @@ namespace twod {
         Vec2 operator / (T s) const             { return Vec2(x/s, y/s); }
         void operator /= (T s)                  { x /= s, y /= s; }
         
-        T lengthSquared() const     { return x*x + y*y; }
-        NI length() const           { return std::sqrt(NI(x*x + y*y)); }
+        T lengthSquared() const                 { return x*x + y*y; }
+        NI length() const                       { return std::sqrt(NI(x*x + y*y)); }
 
         NI setLength(NI newLen)
         {
@@ -74,6 +74,7 @@ namespace twod {
             y *= scale;
             return vlen;    // Old length.
         }
+        
         // normalise in-place
         NI normalise()
         {
