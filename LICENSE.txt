@@ -1,6 +1,6 @@
 
 -------------------------------------------------------------------------------
-BQ-math - Miscellaneous math functionality
+BQ-Twod - Miscellaneous 2D functionality
 -------------------------------------------------------------------------------
 
 The MIT License (MIT)

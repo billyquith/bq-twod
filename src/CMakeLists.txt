@@ -1,7 +1,7 @@
 
 set(BQTWOD_EXTERNAL_DIR "${CMAKE_CURRENT_LIST_DIR}/external")
 
-add_subdirectory(bqmath)
+add_subdirectory(bqutil)
 add_subdirectory(twod)
 
 ##################################################
@@ -26,5 +26,5 @@ unset(BUILD_SHARED)
 
 # Link to this for automatic dependencies
 add_library(bqtwod INTERFACE)
-target_link_libraries(bqtwod INTERFACE bqmath twod chipmunk_static)
+target_link_libraries(bqtwod INTERFACE bqutil twod chipmunk_static)
 
