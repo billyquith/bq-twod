@@ -35,8 +35,13 @@ find_package(SFML 2.3 COMPONENTS system window graphics REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR}/src ${SFML_INCLUDE_DIR})
 
-set(APP_BUILD_TYPE )
-set(APP_RESOURCE_DIR "res")
+if(APPLE)
+    set(APP_BUILD_TYPE MACOSX_BUNDLE)
+    set(APP_RESOURCE_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/../Resources")
+else()
+    set(APP_BUILD_TYPE )
+    set(APP_RESOURCE_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/res")
+endif()
 
 # add_definitions("-DRESOURCE_DIR=\"${APP_RESOURCE_DIR}\"")
 add_definitions(-std=c++11)
@@ -50,3 +55,14 @@ target_link_libraries(${APP_NAME} bqtwod ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 #         ${CMAKE_SOURCE_DIR}/src/app/res
 #         $<TARGET_FILE_DIR:${APP_NAME}>/${APP_RESOURCE_DIR})
 
+if(APPLE)
+    # Mac OS X bundle support.
+    set_target_properties(${APP_NAME} PROPERTIES
+        MACOSX_BUNDLE_COPYRIGHT "${APP_COPYRIGHT}"
+        # MACOSX_BUNDLE_ICON_FILE "Icon.icns"
+        MACOSX_BUNDLE_INFO_STRING "${APP_VERSION}, ${APP_COPYRIGHT}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_NAME} app v${APP_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.quith.${PROJECT_NAME}.app"
+        )
+endif()

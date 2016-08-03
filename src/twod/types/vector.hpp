@@ -76,14 +76,7 @@ namespace twod {
         }
         
         // normalise in-place
-        NI normalise()
-        {
-            const NI vlen = length();
-            const NI invlen = NI(1.0) / vlen;
-            x *= invlen;
-            y *= invlen;
-            return vlen;    // Old length.
-        }
+        NI normalise() { return setLength(NI(1)); }
 
         T dot(const Vec2 &o) const {
             return x * o.x + y * o.y;

@@ -1,5 +1,5 @@
 
-set(LIB_NAME bqmath) # misc
+set(LIB_NAME bqutil) # misc
 
 set(PROJECT_SOURCES
     config.hpp
