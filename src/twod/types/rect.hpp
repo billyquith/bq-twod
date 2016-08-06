@@ -15,8 +15,8 @@ namespace twod {
         Rect(T l, T t, T r, T b) : tl(l,t), br(r,b) {}
         Rect(const Vec &tl_, const Vec &br_) : tl(tl_), br(br_) {}
         
-        template <typename U>
-        Rect(const U &other) : tl(Vec2<T>(other.tl)), br(Vec2<T>(other.br)) {}
+        template <typename OT, typename ONI>
+        Rect(const Rect<OT,ONI> &other) : tl(Vec2<T,NI>(other.tl)), br(Vec2<T,NI>(other.br)) {}
 
         void set(const Vec &tl_, const Vec &br_) { tl = tl_, br = br_; }
         

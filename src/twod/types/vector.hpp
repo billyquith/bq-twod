@@ -39,8 +39,8 @@ namespace twod {
 
         Vec2(T x_, T y_) : x(x_), y(y_) {}
         
-        template <typename U>
-        Vec2(const Vec2<U> &o) : x(T(o.x)), y(T(o.y)) {}
+        template <typename OT, typename OTI>
+        Vec2(const Vec2<OT, OTI> &o) : x(T(o.x)), y(T(o.y)) {}
         
         bool operator == (const Vec2 &o) const {
             return detail::VectorTraits<T>::compare(x, y, o.x, o.y);
