@@ -41,17 +41,13 @@ namespace twod {
         Vec bottomLeft() const    { return Vec(tl.x, br.y); }
         Vec bottomRight() const   { return br; }
         
-        Rect& operator += (const Rect &other) {
+        Rect operator += (const Rect &other) {
             tl += other.tl;
             br += other.br;
             return *this;
         }
         
-        Rect& operator += (const Vec& vec) {
-            tl += vec;
-            br += vec;
-            return *this;
-        }
+        Rect operator += (const Vec& vec) { return moveBy(vec); }
         
         Rect operator + (const Rect& other) {
             return Rect(tl + other.tl, br + other.br);
@@ -61,7 +57,7 @@ namespace twod {
             return Rect(tl + vec, br + vec);
         }
         
-        Rect& moveTo(const Vec& vec)    // absolute
+        Rect moveTo(const Vec& vec)    // absolute
         {
             const Vec sz(size());
             tl = vec;
@@ -69,10 +65,16 @@ namespace twod {
             return *this;
         }
         
-        Rect& moveBy(const Vec& vec)    // relative
+        Rect moveBy(const Vec& vec)    // relative
         {
             tl += vec;
             br += vec;
+            return *this;
+        }
+
+        Rect scaleAbout(const Vec& o, NI scale) {
+            tl = (tl - o) * scale + o;
+            br = (br - o) * scale + o;
             return *this;
         }
 
