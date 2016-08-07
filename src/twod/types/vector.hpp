@@ -76,11 +76,11 @@ namespace twod {
         }
         
         // normalise in-place
-        NI normalise() { return setLength(NI(1)); }
+        NI normalise()              { return setLength(NI(1)); }
+        
+        Vec2 normalised() const     { Vec2 n(*this); n.normalise(); return n; }
 
-        T dot(const Vec2 &o) const {
-            return x * o.x + y * o.y;
-        }
+        T dot(const Vec2 &o) const  { return x * o.x + y * o.y; }
 
         static Vec2 polar(NI rad);               // anti-clkws from x-axis.
         static Vec2 compass(NI degrees);         // clkws from north.
