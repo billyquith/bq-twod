@@ -2,6 +2,8 @@
 #pragma once
 #include "demo.hpp"
 
+#include <twod/chipmunkpp/space.hpp>
+
 class PhysicsDemo : public Demo
 {
 public:
@@ -11,4 +13,7 @@ public:
     void processEvent(const sf::Event &evt) override;
     void draw(sf::RenderTarget &rt) override;
     void exit() override;
+    
+private:
+//    cp::
 };

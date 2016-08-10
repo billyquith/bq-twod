@@ -17,6 +17,9 @@ target_compile_definitions(${BQTWOD_CHIPMUNK_LIB} PRIVATE
     "CP_BOOL_TYPE=bool" "cpTrue=true" "cpFalse=false"
     "CP_USE_DOUBLES=1"
     )
+    
+target_include_directories(${BQTWOD_CHIPMUNK_LIB}
+                           PUBLIC ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)    
 
 unset(BUILD_SHARED)
 
