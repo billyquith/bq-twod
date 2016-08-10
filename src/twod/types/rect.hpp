@@ -57,16 +57,14 @@ namespace twod {
             return Rect(tl + vec, br + vec);
         }
         
-        Rect moveTo(const Vec& vec)    // absolute
-        {
+        Rect moveTo(const Vec& vec) {  // absolute
             const Vec sz(size());
             tl = vec;
             br = tl + sz;
             return *this;
         }
         
-        Rect moveBy(const Vec& vec)    // relative
-        {
+        Rect moveBy(const Vec& vec) {  // relative
             tl += vec;
             br += vec;
             return *this;
