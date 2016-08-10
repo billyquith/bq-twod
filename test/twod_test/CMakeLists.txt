@@ -11,8 +11,8 @@ set(PROJECT_SOURCES
     demo/demo.cpp
     demo/intersect.hpp
     demo/intersect.cpp
-    # demo/physics.hpp
-    # demo/physics.cpp
+    demo/physics.hpp
+    demo/physics.cpp
     
     # ImGui
     imgui/imconfig.h
