@@ -34,33 +34,39 @@ int main()
     bool showUiDemo = false;
     sf::Clock deltaClock;
     twod::Vec2i mousePos;
+    const int minDt = 1000/60;
     
     demos[demoChoice].demo->enter();
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
+//        while (deltaClock.getElapsedTime().asMilliseconds() < minDt)
         {
-            demos[demoChoice].demo->processEvent(event);
-            
-            ImGui::SFML::ProcessEvent(event);
-            
-            switch (event.type)
+            sf::Event event;
+            while (window.pollEvent(event))
             {
-                case sf::Event::Closed:
-                    window.close();
-                    break;
-                    
-                case sf::Event::MouseMoved:
-                    mousePos.set(event.mouseMove.x, event.mouseMove.y);
-                    break;
-                    
-                default:
-                    ;
+                demos[demoChoice].demo->processEvent(event);
+                ImGui::SFML::ProcessEvent(event);
+                
+                switch (event.type)
+                {
+                    case sf::Event::Closed:
+                        window.close();
+                        break;
+                        
+                    case sf::Event::MouseMoved:
+                        mousePos.set(event.mouseMove.x, event.mouseMove.y);
+                        break;
+                        
+                    default:
+                        ;
+                }
             }
         }
         
-        ImGui::SFML::Update(deltaClock.restart());
+        // update
+        sf::Time tm = deltaClock.restart();
+        demos[demoChoice].demo->update(tm.asSeconds());
+        ImGui::SFML::Update(tm);
         
         ImGui::Begin("Twod");
         for (int i=0; i < nbDemos; ++i)

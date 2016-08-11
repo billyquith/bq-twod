@@ -7,13 +7,16 @@
 class PhysicsDemo : public Demo
 {
 public:
-    virtual ~PhysicsDemo() {}
+    PhysicsDemo();
+    virtual ~PhysicsDemo();
     
     void enter() override;
     void processEvent(const sf::Event &evt) override;
+    void update(float dt) override;
     void draw(sf::RenderTarget &rt) override;
     void exit() override;
     
 private:
-//    cp::
+    cpSpace *space_;
+    cpBody *fixedBody_;
 };

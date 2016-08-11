@@ -14,6 +14,7 @@ public:
     
     virtual void enter() {}
     virtual void processEvent(const sf::Event &evt) {}
+    virtual void update(float dt) {}
     virtual void draw(sf::RenderTarget &rt) {}
     virtual void exit() {}
 };
