@@ -40,6 +40,14 @@ static void drawCircle(cpVect pos, cpFloat angle, cpFloat radius,
     circ.setFillColor(sfCol(fillColor));
     circ.setOutlineColor(sfCol(outlineColor));
     dd->rt->draw(circ);
+    
+    sf::VertexArray va(sf::PrimitiveType::LinesStrip, 2);
+    va[0].position = sf::Vector2f(pos.x, pos.y);
+    va[0].color = sf::Color(200,200,200,255);
+    va[1].position = va[0].position
+                     + sf::Vector2f(std::cos(angle) * radius, std::sin(angle) * radius);
+    va[1].color = sf::Color(100,100,100,255);
+    dd->rt->draw(va);
 }
 
 static void drawSeg(cpVect a, cpVect b, cpSpaceDebugColor color, cpDataPointer data)
@@ -166,12 +174,12 @@ PhysicsDemo::PhysicsDemo()
     cpSpaceSetGravity(space_, cpv(0, 300));
     cpSpaceSetSleepTimeThreshold(space_, 0.5f);
     cpSpaceSetCollisionSlop(space_, 0.5f);
- 
     
     fixedBody_ = cpBodyNewStatic();
     auto sh = cpSegmentShapeNew(fixedBody_, cpv(10.f,1000.f), cpv(1000.f,1000.f), 3.f); // bottom
     cpSpaceAddShape(space_, sh);
     cpShapeSetElasticity(sh, 0.3f);
+    cpShapeSetFriction(sh, 0.7f);
     sh = cpSegmentShapeNew(fixedBody_, cpv(10.f,1000.f), cpv(10.f,10.f), 3.f); // left
     cpSpaceAddShape(space_, sh);
     cpShapeSetElasticity(sh, 0.3f);
@@ -189,9 +197,9 @@ PhysicsDemo::PhysicsDemo()
     g_ddOpt.flags = (cpSpaceDebugDrawFlags)(CP_SPACE_DEBUG_DRAW_SHAPES
                     | CP_SPACE_DEBUG_DRAW_CONSTRAINTS
                     | CP_SPACE_DEBUG_DRAW_COLLISION_POINTS);
-    g_ddOpt.shapeOutlineColor =     {1.f,0,0,1.f};
-    g_ddOpt.constraintColor =       {0.f,1,0,1.f};
-    g_ddOpt.collisionPointColor =   {1.f,0,1.f,1.f};
+    g_ddOpt.shapeOutlineColor =     {0.5f, 0, 0.7f, 1.f};
+    g_ddOpt.constraintColor =       {0.f, 1, 0, 1.f};
+    g_ddOpt.collisionPointColor =   {6.f, 0, 6.f, 1.f};
     g_ddOpt.colorForShape = &colForShape;
 }
 
@@ -216,6 +224,7 @@ void PhysicsDemo::processEvent(const sf::Event &evt)
         
         auto sh = cpCircleShapeNew(body, r, cpvzero);
         cpShapeSetElasticity(sh, 0.5f);
+        cpShapeSetFriction(sh, 0.5f);
         
         cpSpaceAddBody(space_, body);
         cpSpaceAddShape(space_, sh);
