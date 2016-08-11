@@ -12,7 +12,7 @@ message("Configuring Chipmunk2D version ${CHIPMUNK_VERSION}")
 
 if(BUILD_SHARED)
   add_library(chipmunk SHARED
-    ${chipmunk_source_files}
+    ${chipmunk_source_files} ${chipmunk_public_header}
   )
   # Tell MSVC to compile the code as C++.
   if(MSVC)
@@ -37,7 +37,7 @@ endif(BUILD_SHARED)
 
 if(BUILD_STATIC)
   add_library(chipmunk_static STATIC
-    ${chipmunk_source_files}
+    ${chipmunk_source_files} ${chipmunk_public_header}
   )
   # Tell MSVC to compile the code as C++.
   if(MSVC)

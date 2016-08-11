@@ -2,7 +2,7 @@
 #pragma once
 #include "demo.hpp"
 
-#include <twod/chipmunkpp/space.hpp>
+#include <twod/physics/physics.hpp>
 
 class PhysicsDemo : public Demo
 {

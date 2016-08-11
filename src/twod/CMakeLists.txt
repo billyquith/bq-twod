@@ -11,7 +11,11 @@ set(PROJECT_SOURCES
     types/rect.hpp
     types/rect.cpp    
     types/vector.hpp
-    types/vector.cpp    
+    types/vector.cpp
+    
+    # physics/Chipmunk
+    physics/physics.hpp
+    physics/physics.cpp
 )
 
 source_group("Twod" REGULAR_EXPRESSION ".*")
