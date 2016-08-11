@@ -70,18 +70,26 @@ namespace twod {
             return *this;
         }
 
+        // Scale rectangle from given point.
         Rect scaleAbout(const Vec& o, NI scale) {
             tl = (tl - o) * scale + o;
             br = (br - o) * scale + o;
             return *this;
         }
 
+        // Is point inside this rectangle?
         bool contains(const Vec& pt) const {
             return  !(pt.x < tl.x || pt.x > br.x || pt.y < tl.y || pt.y > br.y);
         }
 
+        // Is other rectangle inside this one?
         bool contains(const Rect& r) const {
             return contains(r.tl) && contains(r.br);
+        }
+        
+        // Does rectangle intersect/overlap this one?
+        bool intersects(const Rect& r) const {
+            return contains(r.tl) || contains(r.br) || r.contains(tl) || r.contains(br);
         }
 
         // Ensure this inside container. Fails if container smaller.
