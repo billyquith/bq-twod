@@ -35,7 +35,7 @@ namespace cp {
         void setLayers(Layers);
         void setOwning(bool);
         void setUserData(DataPointer);
-        void        setBody(std::shared_ptr<Body> body);
+        void setBody(std::shared_ptr<Body> body);
         DataPointer getUserData() const;
 
     private:

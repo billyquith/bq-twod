@@ -26,9 +26,11 @@ namespace cp {
 
         Body(Float mass, Float inertia);
         Body(Body&&);
-        explicit Body(cpBody*);
         ~Body();
+
+        explicit Body(cpBody*);
         operator cpBody*() const;
+        
         Vect getPosition() const;
         void setPosition(Vect);
 

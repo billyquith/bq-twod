@@ -13,7 +13,7 @@ Layers::Layers()
 Layers::Layers(unsigned int layerNr)
 :   l(1 << layerNr)
 {
-    assert(layerNr <= sizeof(cpBitmask)*8 - 1);
+    assert(layerNr < sizeof(cpBitmask)*8);
 }
 
 Layers::operator cpBitmask() const
