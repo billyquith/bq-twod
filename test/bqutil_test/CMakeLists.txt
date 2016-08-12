@@ -3,7 +3,7 @@ set(APP_NAME bqutil_test)
 
 set(APP_SOURCES
     main.cpp
-    buff.cpp
+    vector.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../src)

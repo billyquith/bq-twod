@@ -36,25 +36,34 @@ namespace bq {
             return it == vector_t::end() ? -1 : std::distance(vector_t::begin(), it);
         }
         
-        void foreach(std::function<void(T&)> fn) {
-            for (auto&& i : *this)
-                fn(i);
+        // iterate over elements. F -> void(T&)
+        template <typename F>
+        void foreach(const F& fn) {
+            for (auto&& it : *this)
+                fn(it);
         }
 
-//        void remove_unordered_index(size_t index) {
-//            const size_t sz = this->size();
-//            if (sz > 1) {
-//                (*this)[index] = (*this)[sz - 1];   // Swap last item into index.
-//            }
-//            this->pop_back(); // size--
-//        }
+        // iterate over elements with index. F -> void(T&, int)
+        template <typename F>
+        void foreachi(const F& fn) {
+            int i(0);
+            for (auto&& it : *this)
+                fn(it, i++);
+        }
 
-//        void remove_unordered(const TYPE &val)
-//        {
-//            typename Parent::iterator it = std::find(this->begin(), this->end(), val);
-//            GU_LIB_ASSERT(it != this->end());
-//            remove_unordered_index(static_cast<size_t>(it - this->begin()));
-//        }
+        void remove_index_swap(std::size_t index) {
+            const std::size_t sz = vector_t::size();
+            if (index < sz-1)
+                (*this)[index] = (*this)[sz - 1];   // Swap last item into index.
+            vector_t::pop_back(); // size--
+        }
+
+        void remove_swap(const T &val)
+        {
+            auto it = std::find(vector_t::begin(), vector_t::end(), val);
+            BQ_ASSERT(it != this->end());
+            remove_index_swap(std::distance(vector_t::begin(), it));
+        }
     };
     
 } // namespace bq

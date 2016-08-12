@@ -1,5 +1,5 @@
 
-#include <bqutil/array.hpp>
+#include <bqutil/vector.hpp>
 #include "catch.hpp"
 
 
@@ -78,4 +78,53 @@ TEST_CASE( "vector" )
         v.foreach([&](int& v){ v *= 2; });
         REQUIRE( v[1] == 4 );
     }
+
+    SECTION( "foreachi" )
+    {
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
+        v.push_back(5);
+        
+        int c = 0;
+        v.foreachi([&](int e, int i) {
+            REQUIRE( v[i] == i+1 );
+            REQUIRE( e == v[i] );
+            REQUIRE( c == i );
+            ++c;
+        });
+        REQUIRE( c == 5 );
+    }
+
+    SECTION( "remove_index_swap" )
+    {
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
+        v.push_back(5);
+
+        REQUIRE( v.size() == 5 );
+        v.remove_index_swap(4);
+        REQUIRE( v.size() == 4 );
+        REQUIRE( v[2] == 3 );
+        REQUIRE( v[3] == 4 );
+    }
+
+    SECTION( "remove_swap" )
+    {
+        v.push_back(1);
+        v.push_back(2);
+        v.push_back(3);
+        v.push_back(4);
+        v.push_back(5);
+        
+        REQUIRE( v.size() == 5 );
+        v.remove_swap(5);
+        REQUIRE( v.size() == 4 );
+        REQUIRE( v[2] == 3 );
+        REQUIRE( v[3] == 4 );
+    }
 }
+

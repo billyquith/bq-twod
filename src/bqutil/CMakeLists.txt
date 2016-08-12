@@ -4,8 +4,8 @@ set(LIB_NAME bqutil) # misc
 set(PROJECT_SOURCES
     config.hpp
     
-    array.hpp
     cyclicbuff.hpp
+    vector.hpp
     
     bqmath.hpp
     bqmath.cpp
