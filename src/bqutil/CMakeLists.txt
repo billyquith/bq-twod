@@ -3,6 +3,10 @@ set(LIB_NAME bqutil) # misc
 
 set(PROJECT_SOURCES
     config.hpp
+    
+    array.hpp
+    cyclicbuff.hpp
+    
     bqmath.hpp
     bqmath.cpp
     )

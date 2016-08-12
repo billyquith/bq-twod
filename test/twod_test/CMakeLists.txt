@@ -1,5 +1,5 @@
 
-set(APP_NAME test_twod)
+set(APP_NAME twod_test)
 set(APP_VERSION "0.1")
 set(APP_COPYRIGHT "Copyright 2016 Bill Quith")
 
@@ -43,7 +43,6 @@ else()
     set(APP_RESOURCE_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/res")
 endif()
 
-# add_definitions("-DRESOURCE_DIR=\"${APP_RESOURCE_DIR}\"")
 add_definitions(-std=c++11)
 
 add_executable(${APP_NAME} ${APP_BUILD_TYPE} ${PROJECT_SOURCES})
