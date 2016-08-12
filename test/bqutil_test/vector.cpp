@@ -18,20 +18,6 @@ TEST_CASE( "vector" )
         REQUIRE( v[0] == 7 );
     }
     
-    SECTION( "remove" )
-    {
-        REQUIRE( v.size() == 0 );
-        
-        v.push_back(9);
-
-        REQUIRE( v.size() == 1 );
-        REQUIRE( v[0] == 9 );
-        
-        v.remove(9);
-        
-        REQUIRE( v.size() == 0 );
-    }
-
     SECTION( "find" )
     {
         v.push_back(1);
@@ -47,7 +33,22 @@ TEST_CASE( "vector" )
         REQUIRE( it != v.end() );
         REQUIRE( std::distance(v.begin(), it) == 2 );
     }
-    
+
+    SECTION( "tryFind" )
+    {
+        v.push_back(1);
+        v.push_back(3);
+        v.push_back(7);
+        v.push_back(9);
+        v.push_back(27);
+        
+        decltype(v)::iterator it;
+        REQUIRE( v.tryFind(99, it) == false );
+        
+        REQUIRE( v.tryFind(7, it) == true );
+        REQUIRE( std::distance(v.begin(), it) == 2 );
+    }
+
     SECTION( "indexOf" )
     {
         v.push_back(1);
@@ -96,6 +97,20 @@ TEST_CASE( "vector" )
         });
         REQUIRE( c == 5 );
     }
+    
+    SECTION( "remove" )
+    {
+        REQUIRE( v.size() == 0 );
+        
+        v.push_back(9);
+        
+        REQUIRE( v.size() == 1 );
+        REQUIRE( v[0] == 9 );
+        
+        v.remove(9);
+        
+        REQUIRE( v.size() == 0 );
+    }
 
     SECTION( "remove_index_swap" )
     {
@@ -106,10 +121,21 @@ TEST_CASE( "vector" )
         v.push_back(5);
 
         REQUIRE( v.size() == 5 );
-        v.remove_index_swap(4);
+        v.remove_index_swap(4); // last
+        
         REQUIRE( v.size() == 4 );
-        REQUIRE( v[2] == 3 );
-        REQUIRE( v[3] == 4 );
+        const int r1[] = { 1, 2, 3, 4 };
+        v.foreachi([&](int e, int i) {
+            REQUIRE(e == r1[i]);
+        });
+        
+        v.remove_index_swap(1);
+        
+        REQUIRE( v.size() == 3 );
+        const int r2[] = { 1, 4, 3 };
+        v.foreachi([&](int e, int i) {
+            REQUIRE(e == r2[i]);
+        });
     }
 
     SECTION( "remove_swap" )
@@ -122,9 +148,20 @@ TEST_CASE( "vector" )
         
         REQUIRE( v.size() == 5 );
         v.remove_swap(5);
+        
         REQUIRE( v.size() == 4 );
-        REQUIRE( v[2] == 3 );
-        REQUIRE( v[3] == 4 );
+        const int r1[] = { 1, 2, 3, 4 };
+        v.foreachi([&](int e, int i) {
+            REQUIRE(e == r1[i]);
+        });
+        
+        v.remove_swap(2);
+        
+        REQUIRE( v.size() == 3 );
+        const int r2[] = { 1, 4, 3 };
+        v.foreachi([&](int e, int i) {
+            REQUIRE(e == r2[i]);
+        });
     }
 }
 
