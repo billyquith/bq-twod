@@ -6,7 +6,7 @@ set(PROJECT_SOURCES
     
     cyclicbuff.hpp
     vector.hpp
-    mempool.hpp
+    objectpool.hpp
     
     bqmath.hpp
     bqmath.cpp
