@@ -7,6 +7,7 @@
 
 namespace bq {
 
+// Extend of functionality of std::vector
 template <typename T>
 class vector : public std::vector<T>
 {
