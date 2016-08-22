@@ -17,7 +17,5 @@ set(PROJECT_SOURCES
 include_directories(${PROJECT_SOURCE_DIR}/src
                     ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)
 
-add_definitions(-std=c++11)
-
 add_library(${LIB_NAME} STATIC ${PROJECT_SOURCES})
 

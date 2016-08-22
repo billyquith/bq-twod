@@ -43,8 +43,6 @@ else()
     set(APP_RESOURCE_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/res")
 endif()
 
-add_definitions(-std=c++11)
-
 add_executable(${APP_NAME} ${APP_BUILD_TYPE} ${PROJECT_SOURCES})
 
 target_link_libraries(${APP_NAME} bqtwod ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
