@@ -1,5 +1,5 @@
 
-#include <bqutil/bqmath.hpp>
+#include <bqutil/math.hpp>
 
 #include <random>
 #include <time.h>
@@ -11,12 +11,12 @@ void bq::random::init()
     g_rand.seed(time(NULL));
 }
 
-uint32_t bq::random::rand()
+uint32_t bq::rand()
 {
     return g_rand();
 }
 
-float bq::random::randf()
+float bq::randf()
 {
     auto const t = g_rand() / float(std::mt19937::max() - std::mt19937::min());
     return t;

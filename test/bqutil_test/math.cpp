@@ -22,7 +22,7 @@ TEST_CASE("random")
     {
         for (int i=0; i < 1000; ++i)
         {
-            auto n = bq::random::randf();
+            auto n = bq::randf();
             REQUIRE( 0.f <= n);
             REQUIRE( n <= 1.f );
         }
@@ -32,7 +32,7 @@ TEST_CASE("random")
     {
         for (int i=0; i < 1000; ++i)
         {
-            auto n = bq::random::randf(10.f, 100.f);
+            auto n = bq::randf(10.f, 100.f);
             REQUIRE( 10.f <= n );
             REQUIRE( n <= 100.f );
         }

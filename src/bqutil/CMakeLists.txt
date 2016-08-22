@@ -8,8 +8,8 @@ set(PROJECT_SOURCES
     vector.hpp
     objectpool.hpp
     
-    bqmath.hpp
-    bqmath.cpp
+    math.hpp
+    math.cpp
     )
 
 #source_group("Twod" REGULAR_EXPRESSION ".*")
