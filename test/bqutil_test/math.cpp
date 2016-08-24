@@ -1,5 +1,5 @@
 
-#include <bqutil/bqmath.hpp>
+#include <bqutil/math.hpp>
 #include "catch.hpp"
 
 
@@ -12,10 +12,10 @@ TEST_CASE("random")
     
     SECTION("rand uint")
     {
-        auto n = bq::random::rand();
-        n = bq::random::rand();
-        n = bq::random::rand();
-        n = bq::random::rand();
+        auto n = bq::rand();
+        n = bq::rand();
+        n = bq::rand();
+        n = bq::rand();
     }
 
     SECTION("randf")
