@@ -25,7 +25,6 @@ unset(BUILD_SHARED)
 
 ##################################################
 # bq-twod
-# - group libraries together, linking is On^2 problem
 
 # Link to this for automatic dependencies
 add_library(bqtwod INTERFACE)
