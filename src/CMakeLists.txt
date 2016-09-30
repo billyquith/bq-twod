@@ -13,7 +13,7 @@ add_subdirectory(external/chipmunk)
 #source_group(chipmunk REGULAR_EXPRESSION chipmunk/.*)
 
 set(BQTWOD_CHIPMUNK_LIB chipmunk_static)
-target_compile_definitions(${BQTWOD_CHIPMUNK_LIB} PRIVATE
+target_compile_definitions(${BQTWOD_CHIPMUNK_LIB} PUBLIC
     "CP_BOOL_TYPE=bool" "cpTrue=true" "cpFalse=false"
     "CP_USE_DOUBLES=1"
     )
