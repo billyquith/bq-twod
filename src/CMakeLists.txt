@@ -19,7 +19,7 @@ target_compile_definitions(${BQTWOD_CHIPMUNK_LIB} PUBLIC
     )
     
 target_include_directories(${BQTWOD_CHIPMUNK_LIB}
-                           PUBLIC ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)    
+                           PUBLIC ${BQTWOD_EXTERNAL_DIR}/chipmunk/include/chipmunk)    
 
 unset(BUILD_SHARED)
 
