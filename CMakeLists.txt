@@ -1,5 +1,5 @@
 ###############################
-# Twod
+# BQ-Twod (2D utilities)
 ###############################
 
 cmake_minimum_required(VERSION 3.1)
