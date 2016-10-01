@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <stdint.h>
+#include <tuple>
 
 namespace twod {
     
@@ -36,20 +37,27 @@ namespace twod {
         T x,y;
 
         Vec2() : x(0), y(0) {}
-
         Vec2(T x_, T y_) : x(x_), y(y_) {}
         
         template <typename OT, typename OTI>
         Vec2(const Vec2<OT, OTI> &o) : x(T(o.x)), y(T(o.y)) {}
+        
+        Vec2(const Vec2&) = default;
+        Vec2& operator = (const Vec2&) = default;
+        
+        Vec2(Vec2&&) = default;
+        Vec2& operator = (Vec2&&) = default;
         
         bool operator == (const Vec2 &o) const {
             return detail::VectorTraits<T>::compare(x, y, o.x, o.y);
         }
         
         void set(T x_, T y_)                    { x = x_, y = y_; }
+        std::tuple<float,float> get() const     { return std::make_tuple(x,y); }
         
         Vec2 operator + (const Vec2 &o) const   { return Vec2(x + o.x, y + o.y); }
         void operator += (const Vec2 &o)        { x += o.x, y += o.y; }
+        void moveBy(T dx, T dy)                 { x += dx, y += dy; }
         
         Vec2 operator - () const                { return Vec2(-x, -y); }
         Vec2 operator - (const Vec2 &o) const   { return Vec2(x - o.x, y - o.y); }

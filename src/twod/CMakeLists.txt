@@ -23,9 +23,7 @@ source_group("Types" REGULAR_EXPRESSION "types/.*")
 source_group("Physics" REGULAR_EXPRESSION "physics/.*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src
-                    ${BQTWOD_EXTERNAL_DIR}/chipmunk/include)
-
-add_definitions(-std=c++11)
+                    ${BQTWOD_EXTERNAL_DIR}/chipmunk/include/chipmunk)
 
 add_library(${LIB_NAME} STATIC ${PROJECT_SOURCES})
 

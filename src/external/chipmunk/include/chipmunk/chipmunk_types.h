@@ -26,6 +26,9 @@
 #include <float.h>
 #include <math.h>
 
+#include <stdbool.h>        // BQ - C99 can't use bool without this
+#define CP_USE_CGTYPES 0    // BQ - including CQ causes macro clashes?!! check()
+
 #ifdef __APPLE__
    #include "TargetConditionals.h"
 #endif

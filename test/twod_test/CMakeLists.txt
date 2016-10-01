@@ -43,8 +43,6 @@ else()
     set(APP_RESOURCE_PATH "$<TARGET_FILE_DIR:${APP_NAME}>/res")
 endif()
 
-add_definitions(-std=c++11)
-
 add_executable(${APP_NAME} ${APP_BUILD_TYPE} ${PROJECT_SOURCES})
 
 target_link_libraries(${APP_NAME} bqtwod ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
@@ -61,7 +59,7 @@ if(APPLE)
         # MACOSX_BUNDLE_ICON_FILE "Icon.icns"
         MACOSX_BUNDLE_INFO_STRING "${APP_VERSION}, ${APP_COPYRIGHT}"
         MACOSX_BUNDLE_SHORT_VERSION_STRING "${APP_VERSION}"
-        MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_NAME} app v${APP_VERSION}"
-        MACOSX_BUNDLE_GUI_IDENTIFIER "org.quith.${PROJECT_NAME}.app"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "bqtwod app v${APP_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.quith.twod.app"
         )
 endif()
