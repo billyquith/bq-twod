@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/billyquith/bq-handy.git
+	branch = master
+	commit = 80187ec96dc4a99a9fea101bacfbcfa86439c653
+	parent = a1e07d189e79d7df9e8012bb95eb10e12e400672
+	cmdver = 0.3.0
