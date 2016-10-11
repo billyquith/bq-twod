@@ -4,6 +4,13 @@ set(BQTWOD_EXTERNAL_DIR "${CMAKE_CURRENT_LIST_DIR}/external")
 add_subdirectory(twod)
 
 ##################################################
+# handy
+
+add_subdirectory(external/handy)
+
+target_include_directories(twod PUBLIC external/handy/src)
+
+##################################################
 # chipmunk
 
 set(BUILD_SHARED OFF)  # for Chipmunk only

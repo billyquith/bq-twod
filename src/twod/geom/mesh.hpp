@@ -1,5 +1,6 @@
 #pragma once
 
+#include <twod/types/vector.hpp>
 #include <handy/vector.hpp>
 
 namespace twod {
