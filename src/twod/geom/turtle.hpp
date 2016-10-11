@@ -2,6 +2,7 @@
 
 #include <twod/geom/mesh.hpp>
 #include <twod/types/vector.hpp>
+#include <functional>
 
 namespace twod {
     
@@ -17,15 +18,15 @@ namespace twod {
     
     class Turtle
     {
+        TurtlePen *pen_;
         Vec2f pos_;
-        Vec2f fwd_ = Vec2f(0,-1.f);
+        Vec2f fwd_;
         float angle_ = 0.f;             // compass: 360 degs, North = 0, clockwise.
         bool penDown_ = false;
-        TurtlePen *pen_;
         
     public:
         
-        Turtle(TurtlePen *pen) : pen_(pen) {}
+        Turtle(TurtlePen *pen) : pen_(pen), fwd_(Vec2f::compass(0)) {}
         
         Vec2f pos() const               { return pos_; }
         float angle() const             { return angle_; }  // compass
@@ -42,6 +43,16 @@ namespace twod {
         
         Turtle& penDown(bool d = true);
         Turtle& penUp()                 { return penDown(false); }
+        
+        // fn == void(Turtle&, size_t index)
+        template <typename F>
+        Turtle& repeat(size_t times, F&& fn)
+        {
+            std::function<void(Turtle&, std::size_t)> wfn(fn);
+            for (std::size_t i=0; i < times; ++i)
+                wfn(*this, i);
+            return *this;
+        }
     };
     
     
@@ -50,18 +61,20 @@ namespace twod {
     {
     public:
         
-        typedef Mesh<TVertex> MeshType;
+        typedef TVertex vert_t;
+        typedef Mesh<vert_t> mesh_t;
 
-        TurtleMesh(MeshType *m) : mesh_(m) {}
+        TurtleMesh(mesh_t *m) : mesh_(m) {}
         
-//        void drawBegin()
-//        void drawEnd();
-        void moveTo(const Vec2f& p) { mesh_->
+        void moveTo(const Vec2f& p)
+        {
+            vert_t v = {p};
+            mesh_->addVert(v);
+        }
         
     private:
         
-        MeshType *mesh_;
-        Vec2f last
+        mesh_t *mesh_;
     };
     
     

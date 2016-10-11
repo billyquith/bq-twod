@@ -12,10 +12,18 @@ namespace twod {
         bq::vector<TVertex> verts_;
         
     public:
+        
+        typedef TVertex vert_t;
+        
         Mesh() = default;
         Mesh(std::size_t nb) { verts_.reserve(nb); }
         
+        std::size_t count() const { return verts_.size(); }
+        
         void addVert(const TVertex& v) { verts_.emplace_back(v); }
+        
+        vert_t& operator[] (std::size_t i) { return verts_.at(i); }
+        const vert_t& operator[] (std::size_t i) const { return verts_.at(i); }
     };
     
     

@@ -108,4 +108,13 @@ namespace twod {
     typedef Vec2<double, double> Vec2f64;
     typedef Vec2f32 Vec2f;
     
+    template <typename T, typename NI>
+    Vec2<T,NI> Vec2<T,NI>::compass(NI degrees)
+    {
+        constexpr float c = M_PI * (1.f / 180.f);
+        const NI r = (90 - degrees)*c;
+        return Vec2(std::cos(r), -std::sin(r));
+    }
+    
 }
+
