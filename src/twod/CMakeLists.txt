@@ -13,6 +13,12 @@ set(PROJECT_SOURCES
     types/vector.hpp
     types/vector.cpp
     
+    # geometry
+    geom/mesh.hpp
+    geom/mesh.cpp
+    geom/turtle.hpp
+    geom/turtle.cpp
+    
     # physics/Chipmunk
     physics/physics.hpp
     physics/physics.cpp
@@ -20,6 +26,7 @@ set(PROJECT_SOURCES
 
 source_group("Twod" REGULAR_EXPRESSION ".*")
 source_group("Types" REGULAR_EXPRESSION "types/.*")
+source_group("Geometry" REGULAR_EXPRESSION "geom/.*")
 source_group("Physics" REGULAR_EXPRESSION "physics/.*")
 
 include_directories(${PROJECT_SOURCE_DIR}/src

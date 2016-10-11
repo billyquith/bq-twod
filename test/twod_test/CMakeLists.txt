@@ -13,6 +13,8 @@ set(PROJECT_SOURCES
     demo/intersect.cpp
     demo/physics.hpp
     demo/physics.cpp
+    demo/turtle.hpp
+    demo/turtle.cpp
     
     # ImGui
     imgui/imconfig.h

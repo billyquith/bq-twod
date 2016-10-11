@@ -7,6 +7,7 @@
 
 #include "demo/intersect.hpp"
 #include "demo/physics.hpp"
+#include "demo/turtle.hpp"
 
 #define BQ_ARRAY_SIZE(A) (sizeof(A)/sizeof(A[0]))
 
@@ -25,6 +26,7 @@ int main()
     
     struct { const char *name; Demo *demo; } demos[] =
     {
+        { "Turtle", new TurtleDemo() },
         { "Physics", new PhysicsDemo() },
         { "Intersect", new IntersectDemo() }
     };
