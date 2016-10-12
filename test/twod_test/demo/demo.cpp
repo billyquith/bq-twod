@@ -37,8 +37,10 @@ void DemoPoints::drawPoints(sf::RenderTarget &rt)
     }
 }
 
-void DemoPoints::processEvent(const sf::Event &evt)
+bool DemoPoints::processEvent(const sf::Event &evt)
 {
+    bool consumed = false;
+    
     switch (evt.type)
     {
         case sf::Event::MouseMoved:
@@ -54,6 +56,11 @@ void DemoPoints::processEvent(const sf::Event &evt)
             {
                 assert(selectedPt_ != nullptr);
                 selectedPt_->pos = mp;
+                
+                if (selectedPt_->onDrag)
+                    selectedPt_->onDrag(*selectedPt_);
+                    
+                consumed = true;
             }
             break;
         }
@@ -78,6 +85,7 @@ void DemoPoints::processEvent(const sf::Event &evt)
                             dragging_ = true;
                             pt.pos = mp;
                             pt.setState(Point::STATE_MOUSE_DRAGGING, true);
+                            consumed = true;
                             break;
                         }
                     }
@@ -95,4 +103,6 @@ void DemoPoints::processEvent(const sf::Event &evt)
         default:
             ;
     }
+    
+    return consumed;
 }

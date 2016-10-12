@@ -28,6 +28,8 @@ namespace twod {
         
         Turtle(TurtlePen *pen) : pen_(pen), fwd_(Vec2f::compass(0)) {}
         
+        void setPen(TurtlePen *pen)     { pen_ = pen; }
+        
         Vec2f pos() const               { return pos_; }
         float angle() const             { return angle_; }  // compass
         
@@ -56,26 +58,26 @@ namespace twod {
     };
     
     
-    template <typename TVertex>
-    class TurtleMesh : public TurtlePen
-    {
-    public:
-        
-        typedef TVertex vert_t;
-        typedef Mesh<vert_t> mesh_t;
-
-        TurtleMesh(mesh_t *m) : mesh_(m) {}
-        
-        void moveTo(const Vec2f& p)
-        {
-            vert_t v = {p};
-            mesh_->addVert(v);
-        }
-        
-    private:
-        
-        mesh_t *mesh_;
-    };
+//    template <typename TVertex>
+//    class TurtleMeshPen : public TurtlePen
+//    {
+//    public:
+//        
+//        typedef TVertex vert_t;
+//        typedef PolyMesh<vert_t, unsigned short> mesh_t;
+//
+//        TurtleMeshPen(mesh_t *m) : mesh_(m) {}
+//        
+//        void moveTo(const Vec2f& p)
+//        {
+//            vert_t v = {p};
+//            mesh_->addVert(v);
+//        }
+//        
+//    private:
+//        
+//        mesh_t *mesh_;
+//    };
     
     
 } // namespace twod

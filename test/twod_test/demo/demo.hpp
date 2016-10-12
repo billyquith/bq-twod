@@ -75,11 +75,15 @@ public:
     
     void addPoint(const Point &p) { points_.push_back(p); }
     void clearPoints() { points_.clear(); }
+    std::size_t size() const { return points_.size(); }
     
-    void processEvent(const sf::Event &evt);
+    bool processEvent(const sf::Event &evt);
     
     void drawLine(sf::RenderTarget &rt);
     void drawPoints(sf::RenderTarget &rt);
+    
+    bool isDragging() const { return dragging_; }
+    Point* selectedPoint() { return selectedPt_; }
     
 private:
     
