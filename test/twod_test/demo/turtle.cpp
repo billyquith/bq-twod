@@ -119,26 +119,42 @@ void TurtleDemo::processEvent(const sf::Event &evt)
         case MODE_TRIANGULATE:
             if (!dpts_.processEvent(evt))
             {
-                if (evt.type == sf::Event::MouseButtonPressed)
+                switch (evt.type)
                 {
-                    DemoPoints::Point pt;
-                    pt.pos.set(evt.mouseButton.x, evt.mouseButton.y);
-
-                    // new point
-                    if (dpts_.size() == 0)
-                        g_tpen[MODE_TRIANGULATE].drawBegin();
-                    g_tpen[MODE_TRIANGULATE].moveTo(pt.pos);
-                    g_tpen[MODE_TRIANGULATE].triangulate();
-
-                    // new interactive point
-                    pt.data = (void*) dpts_.size();
-                    pt.onDrag = [](DemoPoints::Point &pt)
+                    case sf::Event::MouseButtonPressed:
                     {
-                        int index = (int)(ptrdiff_t) pt.data;
-                        g_tpen[MODE_TRIANGULATE].polys()[0][index].pos() = pt.pos;
+                        DemoPoints::Point pt;
+                        pt.pos.set(evt.mouseButton.x, evt.mouseButton.y);
+                        
+                        // new point
+                        if (dpts_.size() == 0)
+                            g_tpen[MODE_TRIANGULATE].drawBegin();
+                        g_tpen[MODE_TRIANGULATE].moveTo(pt.pos);
                         g_tpen[MODE_TRIANGULATE].triangulate();
-                    };
-                    dpts_.addPoint(pt);
+                        
+                        // new interactive point
+                        pt.data = (void*) dpts_.size();
+                        pt.onDrag = [](DemoPoints::Point &pt)
+                        {
+                            int index = (int)(ptrdiff_t) pt.data;
+                            g_tpen[MODE_TRIANGULATE].polys()[0][index].pos() = pt.pos;
+                            g_tpen[MODE_TRIANGULATE].triangulate();
+                        };
+                        dpts_.addPoint(pt);
+                        break;
+                    }
+                        
+                    case sf::Event::KeyPressed:
+                        if (evt.key.code == sf::Keyboard::Delete)
+                        {
+                            dpts_.clearPoints();
+                            g_tpen[MODE_TRIANGULATE].polys()[0].clear();
+                            g_tpen[MODE_TRIANGULATE].triangulate();
+                        }
+                        break;
+                        
+                    default:
+                        ;
                 }
             }
             break;
