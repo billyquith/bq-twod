@@ -1,10 +1,9 @@
 
-#include "turtle.hpp"
+#include "geom.hpp"
 #include <twod/geom/turtle.hpp>
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "../imgui/imgui-SFML.h"
 #include "../imgui/imgui.h"
 
 using namespace twod;
@@ -90,7 +89,7 @@ static void drawShape(Turtle& turt)
 }
 
 
-TurtleDemo::TurtleDemo()
+GeometryDemo::GeometryDemo()
 {
 //    DemoPoints::Point pt1, pt2;
 //    pt1.pos = Vec2f(500,200);
@@ -102,17 +101,17 @@ TurtleDemo::TurtleDemo()
 //    g_tpen[MODE_TRIANGULATE].drawBegin();
 }
 
-TurtleDemo::~TurtleDemo()
+GeometryDemo::~GeometryDemo()
 {
     
 }
 
-void TurtleDemo::enter()
+void GeometryDemo::enter()
 {
     
 }
 
-void TurtleDemo::processEvent(const sf::Event &evt)
+void GeometryDemo::processEvent(const sf::Event &evt)
 {
     switch (g_mode)
     {
@@ -166,9 +165,9 @@ void TurtleDemo::processEvent(const sf::Event &evt)
     Parent::processEvent(evt);
 }
 
-void TurtleDemo::draw(sf::RenderTarget &rt)
+void GeometryDemo::draw(sf::RenderTarget &rt)
 {
-    ImGui::Begin("Turtle");
+    ImGui::Begin("Geometry");
     
     ImGui::PushItemWidth(200);
     ImGui::RadioButton("Triangulate", (int*)&g_mode, MODE_TRIANGULATE); //ImGui::SameLine();
@@ -191,7 +190,7 @@ void TurtleDemo::draw(sf::RenderTarget &rt)
     };
 }
 
-void TurtleDemo::exit()
+void GeometryDemo::exit()
 {
     
 }

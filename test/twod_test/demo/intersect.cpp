@@ -1,7 +1,6 @@
 
 #include "intersect.hpp"
 
-#include "../imgui/imgui-SFML.h"
 #include "../imgui/imgui.h"
 
 using namespace twod;

@@ -2,13 +2,13 @@
 
 #include "demo.hpp"
 
-class TurtleDemo : public InteractiveDemo
+class GeometryDemo : public InteractiveDemo
 {
 public:
     typedef InteractiveDemo Parent;
     
-    TurtleDemo();
-    virtual ~TurtleDemo();
+    GeometryDemo();
+    virtual ~GeometryDemo();
     
     void enter() override;
     void processEvent(const sf::Event &evt) override;
