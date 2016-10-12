@@ -15,7 +15,7 @@ enum DemoMode
     MODE_TURTLE,
     MODE_NUM
 };
-static DemoMode g_mode = MODE_TRIANGULATE;
+static DemoMode g_mode = MODE_TURTLE;
 
 inline sf::Vector2f conv(Vec2f v) { return sf::Vector2f(v.x, v.y); }
 
@@ -58,7 +58,7 @@ public:
         sfverts_.clear();
         for (int i=0; i < mesh_.indices().size(); ++i)
         {
-            uint32_t col = i * 0x8764fae2;
+            uint32_t col = i * 0x811004ae2;
             col ^= col >> 11;
             sf::Vertex v(conv(mesh_.verts()[mesh_.indices()[i]].pos()), sf::Color(col | 0xff));
             sfverts_.append(v);
@@ -74,31 +74,29 @@ public:
 
 
 static SfmlTurtlePen g_tpen[MODE_NUM];
-static Turtle g_turtle(nullptr);
+static Turtle g_turtle(&g_tpen[MODE_TURTLE]);
 
 
-static void drawShape(Turtle& turt)
+static void drawShape()
 {
-    turt
+    g_turtle
         .moveTo(Vec2f(400,400))
         .penDown()
-        .repeat(3, [=](Turtle& t, std::size_t i){
-            t.forward(100).right(45)
-             .forward(50).right(45);
+        .repeat(4, [=](Turtle& t, std::size_t i){
+            const float d = 50;
+            t.forward(d)
+             .left(90).forward(d).right(90).forward(d).right(90).forward(d)
+             .left(90).forward(d)
+             .right(90);
         });
+    
+    g_tpen[MODE_TURTLE].triangulate();
 }
 
 
 GeometryDemo::GeometryDemo()
 {
-//    DemoPoints::Point pt1, pt2;
-//    pt1.pos = Vec2f(500,200);
-//    pt2.pos = Vec2f(500,400);
-//    dpts_.addPoint(pt1);
-//    dpts_.addPoint(pt2);
-    
-    g_turtle.setPen(&g_tpen[g_mode]);
-//    g_tpen[MODE_TRIANGULATE].drawBegin();
+    drawShape();
 }
 
 GeometryDemo::~GeometryDemo()
@@ -165,6 +163,11 @@ void GeometryDemo::processEvent(const sf::Event &evt)
     Parent::processEvent(evt);
 }
 
+void GeometryDemo::update(float dt)
+{
+    g_turtle.setPen(&g_tpen[g_mode]);
+}
+
 void GeometryDemo::draw(sf::RenderTarget &rt)
 {
     ImGui::Begin("Geometry");
@@ -187,6 +190,8 @@ void GeometryDemo::draw(sf::RenderTarget &rt)
             g_tpen[MODE_TURTLE].draw(rt);
             break;
             
+        default:
+            ;
     };
 }
 
